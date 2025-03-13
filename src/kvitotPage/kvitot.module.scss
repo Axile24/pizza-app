@@ -1,0 +1,152 @@
+@use "../vars" as *;
+@use "../mixins" as *;
+
+.receiptPage {
+  position: relative;
+  width: $default-width;
+  height: $default-height;
+  border: 1px solid $border-color;
+  margin: 0 auto;
+  background: $secondary-color;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  color: $dip-hover;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.receiptLogo {
+  width: 80px;
+  margin-bottom: 20px;
+}
+
+.receiptContainer {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .receiptOrderNumber {
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    color: gray;
+  }
+}
+
+.receiptItems {
+  list-style: none;
+  padding: 20px;
+  margin: 20px 20px 0 20px;
+  border-top: 1px solid $border-color;
+  border-bottom: 2px solid $border-color;
+  padding-bottom: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  width: 80%;
+}
+
+.receiptItems::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 10px;
+}
+
+.receiptItem {
+  margin-bottom: 16px;
+}
+
+.receiptItemHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.receiptItemName {
+  font-size: $font-size-medium;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.receiptLine {
+  flex-grow: 1;
+  border-bottom: 1px dotted $dip-hover;
+  margin-bottom: -2px;
+}
+
+.receiptItemPrice {
+  font-weight: 700;
+  white-space: nowrap;
+  font-size: $font-size-base;
+  min-width: 50px;
+  text-align: right;
+  letter-spacing: 0.1em;
+}
+
+.receiptItemQuantity {
+  font-size: $font-size-small;
+  color: gray;
+  font-weight: 600;
+  text-align: left;
+}
+
+.receiptTotalBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $secondary-color;
+  color: $text-color;
+  width: 90%;
+  max-width: 360px;
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: $font-size-medium;
+  @include rounded(8px);
+  margin-bottom: 4px;
+}
+
+.totalText {
+  font-weight: bold;
+}
+
+.totalPrice {
+  font-weight: bold;
+}
+
+.emptyMessage {
+  font-size: 0.9rem;
+  color: gray;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.newOrderBtn {
+  display: block;
+  width: 90%;
+  max-width: 360px;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: $font-size-large;
+  transition: background 0.3s ease-in-out;
+  @include rounded(8px);
+  margin-bottom: 25px;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}

@@ -1,0 +1,47 @@
+@use "../vars" as *;
+@use "../mixins" as *;
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-color: $background-light; 
+}
+
+.startPage {
+  width: $default-width;
+  height: $default-height;
+  background-image: url("../assets/bg.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 20px;
+  @include flex-center;
+  
+  .logo {
+    width: 150px;
+    height: auto;
+    @include rounded(10px);
+
+    // 🎥 Falling animation
+    animation: fallDown 1s ease-out forwards;
+    opacity: 0; // Starts hidden
+  }
+}
+
+// 🌟 Keyframes for falling effect
+@keyframes fallDown {
+  0% {
+    transform: translateY(-100vh); // Starts way above the screen
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0); // Lands in normal position
+    opacity: 1;
+  }
+}

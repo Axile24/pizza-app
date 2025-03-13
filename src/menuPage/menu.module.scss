@@ -1,0 +1,232 @@
+@use "../vars" as *;
+@use "../mixins" as *;
+@use "sass:color";
+
+@use "@fontsource/outfit"; 
+
+.menuPage {
+  width: $default-width;
+  height: $default-height;
+  background-size: cover;
+  border: 1px solid $border-color;
+  background-position: center;
+  background: url("../assets/bg.png"), $primary-color;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  top: 30%;
+  left: 20%;
+  border-radius: 20px;
+}
+
+//  Logo
+.logo2 {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 64px;
+  height: 64px;
+  @include rounded(4px);
+  margin-top: 7px;
+}
+
+//  Cart
+.cartContainer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  @include flex-center;
+
+  .cartBox {
+    width: 64px;
+    height: 64px;
+    @include rounded();
+    background-color: $background-light;
+    margin-top: 14px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cartBadge {
+    position: absolute;
+    top: 5px;
+    right: -7px;
+    background-color: $cart-badge-color;
+    color: white;
+    font-size: 10px;
+    font-weight: 400;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    @include flex-center;
+  }
+
+  .cartContainerBag {
+    display: block;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+  }
+}
+
+// 📜 Optimized Menu Box
+.menuBox {
+  width: 340px;
+  min-height: 150px;
+  max-height: 80%;
+  background-color: $secondary-color;
+  padding: 15px;
+  @include rounded();
+  color: $text-color;
+  text-align: center;
+  overflow-y: auto;
+
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+  h1 {
+    font-size: $font-size-medium;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .menuItem {
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(117, 62, 62, 0.2);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 8px;
+    text-align: left;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $hover-color;
+      color: white;
+    }
+
+    .menuHeaderx{
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        margin-bottom: 5px; // ⬅️ Reduced space between header and text
+      }
+      
+      .menuName {
+        font-size: 16px;
+        font-weight: 700;
+        margin-top: 0px; // ⬅️ Remove any default spacing
+        padding-top: 0px; // ⬅️ Ensure no extra padding
+      }
+      
+
+    .menuPrice {
+        min-width: 50px;
+        text-align: right;
+        white-space: nowrap;
+        letter-spacing: 0.1em; 
+    }
+  }
+}
+
+// 📏 Menu Header with Increased Spacing
+.menuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 35px; // ⬆️ Increased spacing from dips section
+  padding-bottom: 5px;
+
+  .menuLine {
+    flex-grow: 1;
+    border-bottom: 1px dotted white;
+    height: 1px;
+    align-self: center;
+  }
+
+  .menuPrice {
+    min-width: 50px;
+    text-align: right;
+    white-space: nowrap;
+  }
+}
+
+.dipContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); // Ensures dips fit dynamically
+    gap: 10px; // Space between dips
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; // Adjusted spacing
+    width: 100%;
+    max-width: 320px; // Ensures correct alignment
+  }
+  
+  /* Ensures dips have uniform size and spacing */
+  .dipItem {
+    background-color: $hover-color;
+    border: 1px solid #ccc;
+    padding: 8px;
+    @include rounded();
+    font-size: 14px;
+    text-align: center;
+    min-width: 100px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: lowercase;
+    color: white;
+  
+    &:hover {
+      background-color: $dip-hover;
+      border: 1px solid $secondary-color;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+  }
+  
+  /* Selected State */
+  .dipItem.selected {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+  }
+  
+  
+
+// 🎨 Styled Scrollbar
+.menuBox::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 10px;
+}
+
+.menuBox::-webkit-scrollbar-track {
+  background: $background-light;
+  border-radius: 10px;
+}
+
+.menuBox::-webkit-scrollbar-thumb {
+  background: $secondary-color;
+  border-radius: 10px;
+  
+  &:hover {
+    background: color.scale($secondary-color, $lightness: -10%);
+  }
+}

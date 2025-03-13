@@ -1,0 +1,29 @@
+
+
+$primary-color: #8ED8BF;
+$secondary-color: #5c5252; // ✅ Use this instead of $secondary-bg
+$hover-color: #827b7b;
+$dip-hover: #332d2d;
+$text-color: white;
+$background-light: #F4F3F1F0;
+$cart-badge-color: rgb(223, 87, 87);
+$border-color: #aaa;
+$danger-color: #e63946;
+$brown-color: #8B5A2B;
+
+
+
+$font-primary: 'Outfit', sans-serif;
+$font-size-base: 16px;
+$font-size-small: 14px;
+$font-size-large: 24px;
+$font-size-medium: 16px; // ✅ Make sure this is present
+
+
+$spacing-small: 10px;
+$spacing-medium: 100px;
+$spacing-large: 36px;
+$border-radius: 4px;
+
+$default-width: 400px;
+$default-height: 700px;
