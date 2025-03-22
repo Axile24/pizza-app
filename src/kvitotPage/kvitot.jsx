@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getImageUrl } from "../utils";
-import { selectOrderNummer, selectCartItems, selectCartTotal } from "../redux/selectors"; // Import optimized selectors
+import { selectOrderNumber, selectCartItems, selectCartTotal } from "../redux/selectors"; // Import optimized selectors
 import styles from "./kvitot.module.scss";
 
 const Kvitot = () => {
     const navigate = useNavigate();
 
     // Use memoized selectors to prevent unnecessary re-renders
-    const orderNummer = useSelector(selectOrderNummer);
+    const orderNumber = useSelector(selectOrderNumber);
     const items = useSelector(selectCartItems);
     const total = useSelector(selectCartTotal);
 
@@ -21,7 +21,7 @@ const Kvitot = () => {
             <img src={getImageUrl("logo.png")} alt="YYGS Logo" className={styles.receiptLogo} />
             <div className={styles.receiptContainer}>
                 <h1>KVITTO</h1>
-                <p className={styles.receiptOrderNumber}>#{orderNummer || "N/A"}</p>
+                <p className={styles.receiptOrderNumber}>#{ orderNumber || "N/A"}</p>
 
                 {items.length > 0 ? (
                     <ul className={styles.receiptItems}>
