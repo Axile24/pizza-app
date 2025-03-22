@@ -1,7 +1,7 @@
 const URL = "https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com";
 let savedKey = null;
 
-// Fonction asynchrone pour récupérer la clé API
+// Hämta nyckel från API
 export const getApiKey = async () => {
 
     // Vérifie si une clé API est déjà enregistrée en mémoire (évite de refaire plusieurs requêtes inutiles)
@@ -41,7 +41,7 @@ export const createTenant = async (apiKey) => {
                 "Content-Type": "application/json",
                 "x-zocom": apiKey // Utilisation de la clé API pour s'authentifier
             },
-            body: JSON.stringify({ name: "Cote d'Azure" }) // Envoie le nom du tenant
+            body: JSON.stringify({ name: "@chef Nadjib Amokrane " }) // Envoie le nom du tenant
         });
 
         // Vérifie si la requête a échoué
@@ -59,14 +59,14 @@ export const createTenant = async (apiKey) => {
     }
 };
 
-// Fonction pour récupérer le menu du tenant
+// hämta kategorier från API
 export const fetchMenu = async () => {
     try {
         const key = await getApiKey();
         const tenantId = localStorage.getItem("tenantId") || "Cote d'Azure food lover";
         console.log("Fetching menu for tenant:", tenantId);
 
-        const categories = ["wonton", "dip"];
+        const categories = ["wonton", "dip", "drink"];
         const menuData = await Promise.all(
             categories.map((category) =>
                 fetch(`${URL}/menu?tenant=${tenantId}&type=${category}`, { 

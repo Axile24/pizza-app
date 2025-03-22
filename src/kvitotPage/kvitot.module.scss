@@ -4,14 +4,12 @@
 .receiptPage {
   position: relative;
   width: $default-width;
-  height: $default-height;
+  min-height: $default-height; // Changed from fixed height
   border: 1px solid $border-color;
   margin: 0 auto;
   background: $secondary-color;
-  min-height: 600px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   padding-top: 20px;
   color: $dip-hover;
@@ -32,6 +30,9 @@
   width: 90%;
   max-width: 400px;
   text-align: center;
+  flex: 1 1 auto; // Makes it scrollable inside flex column
+  overflow-y: auto;
+  margin-bottom: 1rem;
 
   h1 {
     margin-bottom: 0.5rem;
@@ -62,6 +63,16 @@
   border-radius: 10px;
 }
 
+.receiptItems::-webkit-scrollbar-thumb {
+  background: $secondary-color;
+  border-radius: 10px;
+}
+
+.receiptItems::-webkit-scrollbar-track {
+  background: $background-light;
+  border-radius: 10px;
+}
+
 .receiptItem {
   margin-bottom: 16px;
 }
@@ -69,20 +80,22 @@
 .receiptItemHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position: relative;
+  gap: 0.5rem;
+  margin-bottom: 4px;
 }
 
 .receiptItemName {
   font-size: $font-size-medium;
   font-weight: 500;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .receiptLine {
   flex-grow: 1;
   border-bottom: 1px dotted $dip-hover;
-  margin-bottom: -2px;
+  height: 1px;
+  margin: 0 0.5rem;
 }
 
 .receiptItemPrice {
@@ -113,7 +126,7 @@
   font-weight: 700;
   font-size: $font-size-medium;
   @include rounded(8px);
-  margin-bottom: 4px;
+  margin: 20px auto 4px auto;
 }
 
 .totalText {

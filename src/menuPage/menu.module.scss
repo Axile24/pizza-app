@@ -2,7 +2,7 @@
 @use "../mixins" as *;
 @use "sass:color";
 
-@use "@fontsource/outfit"; 
+@use "@fontsource/outfit";
 
 .menuPage {
   width: $default-width;
@@ -46,7 +46,7 @@
     @include rounded();
     background-color: $background-light;
     margin-top: 14px;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,7 +90,7 @@
   top: 110px;
   left: 50%;
   transform: translateX(-50%);
-  
+
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 
   h1 {
@@ -117,46 +117,60 @@
       color: white;
     }
 
-    .menuHeaderx{
-        display: flex;
-        justify-content: space-between;
-        font-weight: bold;
-        margin-bottom: 5px; // ⬅️ Reduced space between header and text
-      }
-      
-      .menuName {
-        font-size: 16px;
-        font-weight: 700;
-        margin-top: 0px; // ⬅️ Remove any default spacing
-        padding-top: 0px; // ⬅️ Ensure no extra padding
-      }
-      
+    .menuHeaderx {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .menuName {
+      font-size: 16px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .menuLine {
+      flex-grow: 1;
+      border-bottom: 1px dotted white;
+      margin: 0 0.5rem;
+      height: 1px;
+    }
 
     .menuPrice {
-        min-width: 50px;
-        text-align: right;
-        white-space: nowrap;
-        letter-spacing: 0.1em; 
+      min-width: 50px;
+      text-align: right;
+      white-space: nowrap;
+      letter-spacing: 0.1em;
+    }
+
+    .menuIngredients {
+      font-size: 14px;
+      color: white;
+      opacity: 0.7;
     }
   }
 }
 
-// 📏 Menu Header with Increased Spacing
+// 📏 Menu Header with Dots and Spacing
 .menuHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position: relative;
-  gap: 10px;
-  width: 100%;
-  margin-bottom: 35px; // ⬆️ Increased spacing from dips section
-  padding-bottom: 5px;
+  gap: 0.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+
+  .menuName {
+    font-size: 16px;
+    white-space: nowrap;
+  }
 
   .menuLine {
     flex-grow: 1;
     border-bottom: 1px dotted white;
     height: 1px;
-    align-self: center;
+    margin: 0 0.5rem;
   }
 
   .menuPrice {
@@ -166,50 +180,51 @@
   }
 }
 
+// 📦 Section Spacing Between Menu / Dips / Drinks
+.menuSection {
+  margin-bottom: 2rem;
+}
+
 .dipContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); // Ensures dips fit dynamically
-    gap: 10px; // Space between dips
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px; // Adjusted spacing
-    width: 100%;
-    max-width: 320px; // Ensures correct alignment
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.dipItem {
+  background-color: $hover-color;
+  border: 1px solid #ccc;
+  padding: 8px;
+  @include rounded();
+  font-size: 14px;
+  text-align: center;
+  min-width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: lowercase;
+  color: white;
+
+  &:hover {
+    background-color: $dip-hover;
+    border: 1px solid $secondary-color;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   }
-  
-  /* Ensures dips have uniform size and spacing */
-  .dipItem {
-    background-color: $hover-color;
-    border: 1px solid #ccc;
-    padding: 8px;
-    @include rounded();
-    font-size: 14px;
-    text-align: center;
-    min-width: 100px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-weight: 600;
-    text-transform: lowercase;
-    color: white;
-  
-    &:hover {
-      background-color: $dip-hover;
-      border: 1px solid $secondary-color;
-      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    }
-  }
-  
-  /* Selected State */
-  .dipItem.selected {
-    background-color: black;
-    color: white;
-    font-weight: bold;
-  }
-  
-  
+}
+
+.dipItem.selected {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
 
 // 🎨 Styled Scrollbar
 .menuBox::-webkit-scrollbar {
@@ -225,7 +240,7 @@
 .menuBox::-webkit-scrollbar-thumb {
   background: $secondary-color;
   border-radius: 10px;
-  
+
   &:hover {
     background: color.scale($secondary-color, $lightness: -10%);
   }
