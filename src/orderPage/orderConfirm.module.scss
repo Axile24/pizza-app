@@ -1,5 +1,6 @@
 @use "../vars" as *;
 @use "../mixins" as *;
+@use "sass:color"; 
 
 .orderConfirmationPage {
   position: relative;
@@ -61,7 +62,7 @@ p {
 }
 
 .proceedBtn:hover {
-  background-color: darken($primary-color, 10%);
+  background-color: color.adjust($primary-color, $lightness: -10%);
 }
 
 .receiptBtn {
@@ -70,5 +71,5 @@ p {
 }
 
 .receiptBtn:hover {
-  background-color: lighten($secondary-color, 10%);
+  background-color: color.adjust($secondary-color, $lightness: 10%);
 }

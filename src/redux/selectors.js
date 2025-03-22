@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
 // Selectors for order details
-export const selectOrderNummer = (state) => state.order.orderNummer;
+export const selectOrderNumber = (state) => state.order.orderNumber;
 
 // Selectors for cart
 export const selectCartItems = (state) => state.cart.items;
